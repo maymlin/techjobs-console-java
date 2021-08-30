@@ -3,6 +3,7 @@ package org.launchcode.techjobs.console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -92,6 +93,9 @@ public class TechJobs {
             for (Integer j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
+            // Lin 8/30/21 - Unfortunately, a non-integer choice will cause the
+            // program to throw an exception and terminate.
+            // Additional input validation should be implemented to prevent this.
 
             choiceIdx = in.nextInt();
             in.nextLine();
@@ -111,6 +115,15 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+//        System.out.println("printJobs is not implemented yet");
+        String recordSeparator = "*****";
+
+        for (HashMap<String, String> job : someJobs) {
+            System.out.println(recordSeparator);
+            for (Map.Entry<String, String> record : job.entrySet()) {
+                System.out.println(record.getKey() + ": " + record.getValue());
+            }
+            System.out.println(recordSeparator + "\n");
+        }
     }
 }

@@ -98,6 +98,12 @@ public class JobData {
 
             // Open the CSV file and set up pull out column header info and records
             Reader in = new FileReader(DATA_FILE);
+            // Lin 8/30/2021 - Per Apache.org withFirstRecordAsHeader() has
+            // been deprecated. Use Builder#setHeader().setSkipHeaderRecord(true)
+
+            // Lin 8/30/2021 - crude understanding
+            // Specifying the input stream as RFC4180 CSV format, with its
+            // first row/record as header
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
             Integer numberOfColumns = records.get(0).size();
