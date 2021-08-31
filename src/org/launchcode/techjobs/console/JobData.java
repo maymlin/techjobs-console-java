@@ -52,7 +52,11 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        // https://www.geeksforgeeks.org/how-to-clone-a-list-in-java/
+        ArrayList<HashMap<String, String>> clonedAllJobs = new ArrayList<>(allJobs);
+//        Confirmed that they clonedAllJobs and allJobs are indeed different objects
+//        System.out.println("Are they equal? " + (allJobs == clonedAllJobs));
+        return clonedAllJobs;
     }
 
     /**
