@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by LaunchCode
@@ -83,6 +84,32 @@ public class JobData {
 
         return jobs;
     }
+
+    /*
+        Create Method findByValue
+        At this stage, the application will allow users to search a given column
+        of the data for a given String. Your next task is to enable a search that
+        looks for the search term in all of the columns.
+     */
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            Collection<String> values = row.values();
+            ArrayList<String> listOfValues = new ArrayList<>(values);
+
+            for (String aValue : listOfValues) {
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                }
+            }
+        }
+        return jobs;
+    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
